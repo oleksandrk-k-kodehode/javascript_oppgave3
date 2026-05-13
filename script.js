@@ -251,7 +251,7 @@ const interGreeting = {
     salut: "fransk",
     hallo: "tysk",
     hola: "spansk",
-    czesc: "polsk",
+    cześć: "polsk",
 };
 
 const greetings = [
@@ -265,4 +265,40 @@ const greetings = [
     "Good afternoon gentlemen!",
 ];
 
-// Skriv koden for oppgave 5 her
+const cleaner = function (dirtyArr) {
+    let cleanedArr = [];
+    unneededSymbols = ["!", ",", "?", ""];
+    for (greet of dirtyArr) {
+        for (symbol of unneededSymbols) {
+            greet = greet.replaceAll(symbol, "");
+        }
+        cleanedArr.push(greet.toLowerCase());
+    }
+
+    return cleanedArr;
+};
+
+const greetingsJSON = JSON.parse(JSON.stringify(interGreeting));
+
+const transformedGreetings = cleaner(greetings);
+
+const checkGreetings = (cleanArr, checkArr) => {
+    let resArr = [];
+    for (greeting of cleanArr) {
+        let worked = 0;
+        for (check in checkArr) {
+            if (greeting.includes(check)) {
+                resArr.push(checkArr[check]);
+                worked++;
+                continue;
+            }
+        }
+        if (!worked) {
+            resArr.push("Doesn't contain greeting. (Rude)");
+        }
+    }
+
+    return resArr;
+};
+
+console.log(checkGreetings(transformedGreetings, greetingsJSON));
