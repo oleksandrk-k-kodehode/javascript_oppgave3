@@ -173,6 +173,7 @@ for (word of toFix) {
 
 const answer = fixed.join(" ");
 console.log("\nAnswer:", answer);
+console.log("skal returnere:", "this text needs to be cleaned up");
 /******************************************************************************
 4.
 
@@ -213,7 +214,18 @@ function doubleSwap(string, charA, charB) {
     return newStr.join("");
 }
 
-console.log("doubleSwap():", doubleSwap("hahahahaahhaha", "h", "a"));
+console.log("\ndoubleSwap():", doubleSwap("this is a string", "i", "s"));
+console.log("skal returnere thsi si a itrsng");
+console.log(
+    "\ndoubleSwap():",
+    doubleSwap("what is the point of this?", "o", "t"),
+);
+console.log("skal returnere whao is ohe ptino tf ohis?");
+console.log(
+    "\ndoubleSwap():",
+    doubleSwap("m#ybe #nother #ppro#ch is necess#ry", "#", "a"),
+);
+console.log("skal returnere maybe another approach is necessary");
 /******************************************************************************
 5.
 
@@ -288,17 +300,20 @@ const checkGreetings = (cleanArr, checkArr) => {
         let worked = 0;
         for (check in checkArr) {
             if (greeting.includes(check)) {
-                resArr.push(checkArr[check]);
+                resArr.push(`HELLO oppdaget på ${checkArr[check]}.`);
                 worked++;
                 continue;
             }
         }
         if (!worked) {
-            resArr.push("Doesn't contain greeting. (Rude)");
+            resArr.push("Ingen HELLO oppdaget.");
         }
     }
 
     return resArr;
 };
 
-console.log(checkGreetings(transformedGreetings, greetingsJSON));
+console.log(
+    "\ncheckGreetings()",
+    checkGreetings(transformedGreetings, greetingsJSON),
+);
